@@ -7,5 +7,7 @@ $(document).ready(function () {
     // this will display the date and time on the page
     $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
 
-    
+    $("#save-Btn").on("click", function() {
+        
+    })
 })
