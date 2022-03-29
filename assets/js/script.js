@@ -20,13 +20,41 @@ $(document).ready(function () {
 
 // when page is refreshed this loads the saved data from the localStorage for each hour
 $("#hour8 .activity").val(localStorage.getItem("hour8"));
-$("#nine .activity").val(localStorage.getItem("nine"));
-$("#ten .activity").val(localStorage.getItem("ten"));
-$("#eleven .activity").val(localStorage.getItem("eleven"));
-$("#twelve .activity").val(localStorage.getItem("twelve"));
-$("#one .activity").val(localStorage.getItem("one"));
-$("#two .activity").val(localStorage.getItem("two"));
-$("#three .activity").val(localStorage.getItem("three"));
-$("#four .activity").val(localStorage.getItem("four"));
-$("#five .activity").val(localStorage.getItem("five"));
-$("#six .activity").val(localStorage.getItem("six"));
+$("#hour9 .activity").val(localStorage.getItem("hour9"));
+$("#hour10 .activity").val(localStorage.getItem("hour10"));
+$("#hour11 .activity").val(localStorage.getItem("hour11"));
+$("#hour12 .activity").val(localStorage.getItem("hour12"));
+$("#hour13 .activity").val(localStorage.getItem("hour13"));
+$("#hour14 .activity").val(localStorage.getItem("hour14"));
+$("#hour15 .activity").val(localStorage.getItem("hour15"));
+$("#hour16 .activity").val(localStorage.getItem("hour16"));
+$("#hour17 .activity").val(localStorage.getItem("hour17"));
+$("#hour18 .activity").val(localStorage.getItem("hour18"));
+
+// function that checks the time and changes the time blocks color depending on the current time
+function timeChecker() {
+    // checks the current time
+    var currentTime = moment().hour();
+
+    // this loop checks if the current time is past the blocks time
+    $(".time-block").each(function () {
+        var blockTime = parseInt($(this).attr("id").split("hour")[1]);
+        console.log(blockTime, currentTime)
+
+        if (blockTime < currentTime) {
+            $(this).addClass("past");
+            $(this).removeClass("future");
+            $(this).removeClass("present");
+        } else if (blockTime === currentTime) {
+            $(this).removeClass("past");
+            $(this).addClass("present");
+            $(this).removeClass("future");
+        } else {
+            $(this).removeClass("present");
+            $(this).removeClass("past");
+            $(this).addClass("future");
+        }
+    })
+};
+
+timeChecker();
